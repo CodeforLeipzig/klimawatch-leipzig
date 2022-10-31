@@ -1,0 +1,98 @@
+{
+  "Metadaten": {
+    "Wert": {
+      "Einheit": "Tonnen pro Einwohner"
+    }
+  },
+  "Daten": [{
+    "Sektor": "Verkehr",
+    "Werte": [{
+      "Jahr": 2011,
+      "Wert": 1.46
+    }, {
+      "Jahr": 2012,
+      "Wert": 1.44
+    }, {
+      "Jahr": 2013,
+      "Wert": 1.43
+    }, {
+      "Jahr": 2014,
+      "Wert": 1.45
+    }, {
+      "Jahr": 2015,
+      "Wert": 1.43
+    }, {
+      "Jahr": 2016,
+      "Wert": 1.42
+    }, {
+      "Jahr": 2017,
+      "Wert": 1.39
+    }, {
+      "Jahr": 2018,
+      "Wert": 1.37
+    }, {
+      "Jahr": 2019,
+      "Wert": 1.35
+    }]
+  }, {
+    "Sektor": "Private Haushalte",
+    "Werte": [{
+      "Jahr": 2011,
+      "Wert": 1.90
+    }, {
+      "Jahr": 2012,
+      "Wert": 2.02
+    }, {
+      "Jahr": 2013,
+      "Wert": 2.06
+    }, {
+      "Jahr": 2014,
+      "Wert": 1.79
+    }, {
+      "Jahr": 2015,
+      "Wert": 1.83
+    }, {
+      "Jahr": 2016,
+      "Wert": 1.81
+    }, {
+      "Jahr": 2017,
+      "Wert": 1.78
+    }, {
+      "Jahr": 2018,
+      "Wert": 1.76
+    }, {
+      "Jahr": 2019,
+      "Wert": 1.65
+    }]
+  }, {
+    "Sektor": "Wirtschaft und kommunale Einrichtungen",
+    "Werte": [{
+      "Jahr": 2011,
+      "Wert": 3.03
+    }, {
+      "Jahr": 2012,
+      "Wert": 3.05
+    }, {
+      "Jahr": 2013,
+      "Wert": 3.15
+    }, {
+      "Jahr": 2014,
+      "Wert": 2.95
+    }, {
+      "Jahr": 2015,
+      "Wert": 2.86
+    }, {
+      "Jahr": 2016,
+      "Wert": 2.77
+    }, {
+      "Jahr": 2017,
+      "Wert": 2.65
+    }, {
+      "Jahr": 2018,
+      "Wert": 2.63
+    }, {
+      "Jahr": 2019,
+      "Wert": 2.30
+    }]
+  }]
+}
