@@ -4,7 +4,7 @@ spring:
   jpa:
     properties:
       hibernate:
-        dialect: org.hibernate.spatial.dialect.postgis.PostgisDialect
+        dialect: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: none
       jdbc:
@@ -13,6 +13,6 @@ spring:
   datasource:
     initialization-mode: always
     platform: postgres
-    url: jdbc:postgresql://localhost:5432/klimawatchdb
+    url: jdbc:postgresql://localhost:5433/klimawatchdb
     username: klimawatch
     password: klimawatch
