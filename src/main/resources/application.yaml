@@ -1,1 +1,18 @@
 app:
+
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.spatial.dialect.postgis.PostgisDialect
+    hibernate:
+      ddl-auto: none
+      jdbc:
+        lob:
+          non_contextual_creation: true
+  datasource:
+    initialization-mode: always
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/klimawatchdb
+    username: klimawatch
+    password: klimawatch

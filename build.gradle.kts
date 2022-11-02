@@ -20,7 +20,9 @@ repositories {
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10")
     implementation(platform("org.springframework.boot:spring-boot-dependencies:2.7.5"))
-    implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter:2.7.5")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.7.5")
+    implementation("org.springframework.boot:spring-boot-starter-data-rest:2.7.5")
     implementation("org.springframework.boot:spring-boot-starter-web:2.7.5")
     implementation("org.springframework:spring-web:5.3.23")
     implementation("com.fasterxml.jackson.core:jackson-core:2.14.0-rc2")
@@ -29,6 +31,8 @@ dependencies {
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.0-rc2")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.14.0-rc2")
     implementation("org.springdoc:springdoc-openapi-ui:1.6.12")
+
+    runtimeOnly("org.postgresql:postgresql")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.0")
