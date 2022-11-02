@@ -10,18 +10,9 @@ class EmissionsController @ConstructorBinding constructor(
     internal val emissionsService: EmissionsService
 ) {
 
-    @GetMapping("greenhouse-gas")
-    fun getGreenhouseGasEmissions() = emissionsService.getAll()
-
-    @GetMapping("greenhouse-gases/bysector/{sector}")
-    fun getGreenhouseGasEmissionsBySectorAndYear(
-        @PathVariable("sector") sector: String,
+    @GetMapping("greenhouse-gases")
+    fun getGreenhouseGasEmissions(
+        @RequestParam(required = false) sector: String,
         @RequestParam(required = false) year: Int?
-    ) = emissionsService.getBySector(year = year, sector = sector)
-
-    @GetMapping("greenhouse-gases/byyear/{year}")
-    fun getGreenhouseGasEmissionsByYear(
-        @PathVariable("year") year: Int,
-        @RequestParam(required = false) sector: String?
-    ) = emissionsService.getByYear(year = year, sector = sector)
+    ) = emissionsService.getBySectorAndYear(year = year, sector = sector)
 }

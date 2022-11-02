@@ -13,10 +13,10 @@ class EmissionsService @ConstructorBinding constructor(internal val objectMapper
 
     fun getAll(): EmissionsTO = getEmissionsData()
 
-    fun getBySector(sector: String, year: Int?): List<EmissionsData> {
+    fun getBySectorAndYear(sector: String?, year: Int?): List<EmissionsData> {
         val data = getEmissionsData()
-        val filteredBySector = data.data.filter { it.sector == sector }
-        return if (year != null) {
+        val filteredBySector = if (sector != null) data.data.filter { it.sector == sector } else data.data
+        val filteredByYear = if (year != null) {
             filteredBySector.map {
                 EmissionsData(
                     sector = it.sector,
@@ -24,17 +24,7 @@ class EmissionsService @ConstructorBinding constructor(internal val objectMapper
                 )
             }
         } else filteredBySector
-    }
-
-    fun getByYear(year: Int, sector: String?): List<EmissionsData> {
-        val data = getEmissionsData()
-        val filteredByYear = data.data.map {
-            EmissionsData(
-                sector = it.sector,
-                data = it.data.filter { timedData -> timedData.year == year }
-            )
-        }
-        return sector?.let { filteredByYear.filter { it.sector == sector } } ?: filteredByYear
+        return filteredByYear.filter { it.data.isNotEmpty() }
     }
 
     private fun getEmissionsData(): EmissionsTO {
