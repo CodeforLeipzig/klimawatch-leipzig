@@ -2,6 +2,7 @@ group = "de.l.oklab.klimawatch"
 version = "1.0.0-SNAPSHOT"
 
 plugins {
+    id ("org.jetbrains.kotlin.plugin.noarg") version ("1.7.21")
     id("org.springframework.boot") version("2.7.5")
     id("org.jetbrains.kotlin.plugin.spring") version("1.7.20")
     idea
@@ -41,7 +42,9 @@ dependencies {
         exclude(mapOf("group" to "org.junit.vintage", "module" to "junit-vintage-engine"))
     }
 }
-
+noArg {
+    annotation("javax.persistence.Entity")
+}
 tasks.test {
     useJUnitPlatform()
 }
