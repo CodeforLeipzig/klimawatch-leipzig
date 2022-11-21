@@ -1,0 +1,50 @@
+cache:
+  key: $CI_JOB_NAME
+  paths:
+    - .m2/repository
+
+stages:
+  - build
+  - package
+  - release
+
+build-jar:
+  image: maven:3-openjdk-18
+  stage: build
+  script: "mvn -Drevision=${BUILD_VERSION} clean package -B"
+  artifacts:
+    paths:
+      - target/klimawatch-leipzig-${BUILD_VERSION}.jar
+
+package-docker-default:
+  stage: package
+  image: docker:stable-dind
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+  services:
+    - name: docker:stable-dind
+      alias: docker
+  needs:
+    - job: build-jar
+      artifacts: true
+  script:
+    - ls -halt
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build --build-arg JAR_SOURCE_PATH="target/klimawatch-leipzig-${BUILD_VERSION}.jar" --tag "${CI_REGISTRY_IMAGE}" .
+    - docker push $CI_REGISTRY_IMAGE
+
+package-docker-release:
+  stage: release
+  services:
+    - name: docker:stable-dind
+      alias: docker
+  rules:
+    - if: $CI_COMMIT_TAG
+  needs:
+    - job: build-jar
+      artifacts: true
+  script:
+    - ls -halt
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build --build-arg JAR_SOURCE_PATH="target/klimawatch-leipzig-${BUILD_VERSION}.jar" --tag "${CI_REGISTRY_IMAGE}" --tag "${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}" .
+    - docker push $CI_REGISTRY_IMAGE

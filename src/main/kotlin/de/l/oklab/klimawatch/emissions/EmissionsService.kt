@@ -32,4 +32,12 @@ class EmissionsService @ConstructorBinding constructor(internal val objectMapper
             javaClass.getResource("/data/greenhouse-gas-emissions-leipzig.json"), EmissionsTO::class.java
         ).apply { emissions = this }
     }
+
+    fun getSectors(): List<String> {
+        return listOf("Verkehr")
+    }
+
+    fun getYears(): List<Long> {
+        return listOf(2018, 2019)
+    }
 }
