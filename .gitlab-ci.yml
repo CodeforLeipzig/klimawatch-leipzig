@@ -9,9 +9,9 @@ stages:
   - release
 
 build-jar:
-  image: maven:3-openjdk-18
+  image: gradle:7.5.1-jdk17
   stage: build
-  script: "mvn -Drevision=${BUILD_VERSION} clean package -B"
+  script: "gradle build"
   artifacts:
     paths:
       - target/klimawatch-leipzig-${BUILD_VERSION}.jar

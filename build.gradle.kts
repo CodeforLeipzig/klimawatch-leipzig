@@ -14,6 +14,10 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
+springBoot {
+    mainClass.set("de.l.oklab.klimawatch.Application")
+}
+
 repositories {
     mavenCentral()
 }
