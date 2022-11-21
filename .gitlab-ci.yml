@@ -1,7 +1,10 @@
+before_script:
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+
 cache:
-  key: $CI_JOB_NAME
   paths:
-    - .m2/repository
+    - .gradle/wrapper
+    - .gradle/caches
 
 stages:
   - build
@@ -11,10 +14,10 @@ stages:
 build-jar:
   image: gradle:7.5.1-jdk17
   stage: build
-  script: "gradle build"
+  script: "./gradlew build"
   artifacts:
     paths:
-      - target/klimawatch-leipzig-${BUILD_VERSION}.jar
+      - build/libs/app.jar
 
 package-docker-default:
   stage: package
@@ -30,7 +33,7 @@ package-docker-default:
   script:
     - ls -halt
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker build --build-arg JAR_SOURCE_PATH="target/klimawatch-leipzig-${BUILD_VERSION}.jar" --tag "${CI_REGISTRY_IMAGE}" .
+    - docker build --build-arg JAR_SOURCE_PATH="build/libs/app.jar" --tag "${CI_REGISTRY_IMAGE}" .
     - docker push $CI_REGISTRY_IMAGE
 
 package-docker-release:
@@ -46,5 +49,5 @@ package-docker-release:
   script:
     - ls -halt
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker build --build-arg JAR_SOURCE_PATH="target/klimawatch-leipzig-${BUILD_VERSION}.jar" --tag "${CI_REGISTRY_IMAGE}" --tag "${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}" .
+    - docker build --build-arg JAR_SOURCE_PATH="build/libs/app.jar" --tag "${CI_REGISTRY_IMAGE}" --tag "${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}" .
     - docker push $CI_REGISTRY_IMAGE
