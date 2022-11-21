@@ -23,3 +23,8 @@ services:
       PGADMIN_DEFAULT_PASSWORD: abc123
     ports:
       - "8889:80"
+
+  backend:
+    image: registry.gitlab.com/klimawatch-leipzig/backend:latest
+    ports:
+      - "8081:8080"
