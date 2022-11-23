@@ -7,7 +7,10 @@ import org.springframework.boot.context.properties.ConstructorBinding
 import org.springframework.stereotype.Service
 
 @Service
-class EmissionsService @ConstructorBinding constructor(internal val objectMapper: ObjectMapper) {
+class EmissionsService @ConstructorBinding constructor(
+        internal val objectMapper: ObjectMapper,
+        internal val repository: EmissionsRepository,
+) {
 
     var emissions: EmissionsTO? = null
 
@@ -25,6 +28,15 @@ class EmissionsService @ConstructorBinding constructor(internal val objectMapper
             }
         } else filteredBySector
         return filteredByYear.filter { it.data.isNotEmpty() }
+    }
+
+    fun importData() {
+        val data = getEmissionsData()
+        // TODO extract all distinct sector names
+        // TODO create sector entities and save them
+        // TODO use saved sector entities in emissions (match by name)
+        val entities = getEmissionsData().toEntities(/*sectors*/)
+        //repository.saveAll(entities)
     }
 
     private fun getEmissionsData(): EmissionsTO {
