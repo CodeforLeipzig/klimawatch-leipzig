@@ -12,7 +12,7 @@ services:
       - APP_DB_NAME=klimawatchdb
     volumes:
       -  ${pgdata}:/var/lib/postgresql/data
-    #      - ./db:/docker-entrypoint-initdb.d/
+      - ./db:/docker-entrypoint-initdb.d/
     ports:
       - "5433:5432"
 

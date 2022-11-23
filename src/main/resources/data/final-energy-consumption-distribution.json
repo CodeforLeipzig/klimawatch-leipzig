@@ -1,0 +1,68 @@
+{
+  "Metadaten": {
+    "Wert": {
+      "Einheit": "Anteil an Endenergieverbrauch in Prozent"
+    },
+    "Quelle": {
+      "Webseite": "https://ratsinformation.leipzig.de/allris_leipzig_public/vo020?VOLFDNR=2000269&refresh=false",
+      "Download": "https://ratsinformation.leipzig.de/allris_leipzig_public/vo020?0--anlagenHeaderPanel-attachmentsList-0-attachment-link&VOLFDNR=2000269&refresh=false",
+      "Datei": "20220621_EKSP_2030_final.pdf",
+      "Seite": {
+        "PDF": 27,
+        "Dokument": 26
+      },
+      "Element": {
+        "Typ": "Abbildung",
+        "Identifikator": "6",
+        "Bezeichnung": "Anteile am Endenergieverbrauch gesamt nach Sektoren für das Jahr 2019"
+      }
+    }
+  },
+  "Daten": [
+    {
+      "Sektor": "Verkehr",
+      "Werte": [
+        {
+          "Jahr": 2019,
+          "Wert": 25.1
+        }
+      ]
+    },
+    {
+      "Sektor": "Private Haushalte",
+      "Werte": [
+        {
+          "Jahr": 2019,
+          "Wert": 34.3
+        }
+      ]
+    },
+    {
+      "Sektor": "Kommunale Einrichtungen",
+      "Werte": [
+        {
+          "Jahr": 2019,
+          "Wert": 1.7
+        }
+      ]
+    },
+    {
+      "Sektor": "Industrie",
+      "Werte": [
+        {
+          "Jahr": 2019,
+          "Wert": 24.5
+        }
+      ]
+    },
+    {
+      "Sektor": "Gewerbe, Handel, Dienstleistungen",
+      "Werte": [
+        {
+          "Jahr": 2019,
+          "Wert": 14.5
+        }
+      ]
+    }
+  ]
+}
