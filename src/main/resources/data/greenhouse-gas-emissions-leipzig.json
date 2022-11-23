@@ -2,6 +2,20 @@
   "Metadaten": {
     "Wert": {
       "Einheit": "Tonnen pro Einwohner"
+    },
+    "Quelle":  {
+      "Webseite": "https://ratsinformation.leipzig.de/allris_leipzig_public/vo020?VOLFDNR=2000269&refresh=false",
+      "Download": "https://ratsinformation.leipzig.de/allris_leipzig_public/vo020?0--anlagenHeaderPanel-attachmentsList-0-attachment-link&VOLFDNR=2000269&refresh=false",
+      "Datei": "20220621_EKSP_2030_final.pdf",
+      "Seite": {
+        "PDF": 27,
+        "Dokument": 26
+      },
+      "Element": {
+        "Typ": "Abbildung",
+        "Identifikator": "5",
+        "Bezeichnung": "Entwicklung der THG-Emissionen in der Stadt Leipzig (inkl. CO2-Äquivalenten und Vorketten, ohne Witterungskorrektur)"
+      }
     }
   },
   "Daten": [{

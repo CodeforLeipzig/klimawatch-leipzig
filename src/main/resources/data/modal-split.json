@@ -1,0 +1,139 @@
+{
+  "Metadaten": {
+    "Wert": {
+      "Einheit": "Prozent am Gesamtverkehr"
+    },
+    "Quelle":  {
+      "Webseite": "https://ratsinformation.leipzig.de/allris_leipzig_public/vo020?VOLFDNR=2000269&refresh=false",
+      "Download": "https://ratsinformation.leipzig.de/allris_leipzig_public/vo020?0--anlagenHeaderPanel-attachmentsList-0-attachment-link&VOLFDNR=2000269&refresh=false",
+      "Datei": "20220621_EKSP_2030_final.pdf",
+      "Seite": {
+        "PDF": 23,
+        "Dokument": 22
+      },
+      "Element": {
+        "Typ": "Tabelle",
+        "Identifikator": "4",
+        "Bezeichnung": "Zielstellungen EKSP 2014-2020 und Ist-Stand bis 2018 Handlungsfeld Mobilität",
+        "Hinweise": [
+          "Zu Ziel 2025: Mit dem Stadtratsbeschluss Nr. VI-DS-03902-NF-02 zur „Mobilitätsstrategie 2030 für Leipzig“ vom 27.09.2018 wurde ein gegenüber dem EKSP 2014-2020 abweichender Modal-Split gemäß Nachhaltigkeits-Szenario beschlossen.",
+          "Ursprüngliche Quelle: Stadt Leipzig, EUROPÄISCHE ENERGIE- UND KLIMASCHUTZ-KOMMUNE UMSETZUNGSBERICHT 2018, Seite 9"
+        ]
+      }
+    }
+  },
+  "Daten": [{
+    "Sektor": "Fußverkehr",
+    "Werte": [{
+      "Jahr": 2008,
+      "Typ": "Ist",
+      "Wert": 27.3
+    },{
+      "Jahr": 2013,
+      "Typ": "Ist",
+      "Wert": 29.3
+    },{
+      "Jahr": 2015,
+      "Typ": "Ist",
+      "Wert": 25.4
+    },{
+      "Jahr": 2018,
+      "Typ": "Ist",
+      "Wert": 27.3
+    },{
+      "Jahr": 2019,
+      "Typ": "Ist",
+      "Wert": null
+    },{
+      "Jahr": 2025,
+      "Typ": "Soll",
+      "Wert": 30.0
+    }]
+  },{
+    "Sektor": "Radverkehr",
+    "Werte": [{
+      "Jahr": 2008,
+      "Typ": "Ist",
+      "Wert": 14.4
+    },{
+      "Jahr": 2013,
+      "Typ": "Ist",
+      "Wert": 15.2
+    },{
+      "Jahr": 2015,
+      "Typ": "Ist",
+      "Wert": 17.3
+    },{
+      "Jahr": 2018,
+      "Typ": "Ist",
+      "Wert": 18.7
+    },{
+      "Jahr": 2019,
+      "Typ": "Ist",
+      "Wert": null
+    },{
+      "Jahr": 2025,
+      "Typ": "Soll",
+      "Wert": 20.0
+    }]
+  },{
+    "Sektor": "Öffentlicher Nahverkehr",
+    "Werte": [{
+      "Jahr": 2008,
+      "Typ": "Ist",
+      "Wert": 18.8
+    },{
+      "Jahr": 2013,
+      "Typ": "Ist",
+      "Wert": 17.1
+    },{
+      "Jahr": 2015,
+      "Typ": "Ist",
+      "Wert": 17.6
+    },{
+      "Jahr": 2018,
+      "Typ": "Ist",
+      "Wert": 17.5
+    },{
+      "Jahr": 2019,
+      "Typ": "Ist",
+      "Wert": null
+    },{
+      "Jahr": 2025,
+      "Typ": "Soll",
+      "Wert": 25.0
+    }]
+  },{
+    "Sektor": "Motorisierter Individualverkehr",
+    "Werte": [{
+      "Jahr": 2008,
+      "Typ": "Ist",
+      "Wert": 39.6
+    },{
+      "Jahr": 2013,
+      "Typ": "Ist",
+      "Wert": 38.3
+    },{
+      "Jahr": 2015,
+      "Typ": "Ist",
+      "Wert": 39.7
+    },{
+      "Jahr": 2018,
+      "Typ": "Ist",
+      "Wert": 36.5
+    },{
+      "Jahr": 2019,
+      "Typ": "Ist",
+      "Wert": null
+    },{
+      "Jahr": 2025,
+      "Typ": "Soll",
+      "Wert": 25.0
+    }]
+  }]
+}
+
+
+
+
+
