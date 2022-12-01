@@ -13,7 +13,11 @@ data class Emissions(
         @Type(type = "org.hibernate.type.UUIDCharType")
         val externalId: UUID = UUID.randomUUID(),
         val year: Int,
-        val sector: String,
+        @ManyToOne(
+                fetch = FetchType.LAZY
+        )
+        @JoinColumn(name = "id")
+        val sector: Sector,
         val value: Double
 )
 

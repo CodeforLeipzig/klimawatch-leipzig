@@ -1,6 +1,9 @@
 package de.l.oklab.klimawatch.emissions
 
-class EmissionsRepository {
+import de.l.oklab.klimawatch.emissions.bo.Emissions
+import org.springframework.data.jpa.repository.JpaRepository
+
+interface EmissionsRepository: JpaRepository<Emissions, Long> {
 
 
 }

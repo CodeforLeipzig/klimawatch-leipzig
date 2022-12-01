@@ -33,6 +33,7 @@ class EmissionsService @ConstructorBinding constructor(
     fun importData() {
         val data = getEmissionsData()
         // TODO extract all distinct sector names
+
         // TODO create sector entities and save them
         // TODO use saved sector entities in emissions (match by name)
         val entities = getEmissionsData().toEntities(/*sectors*/)
