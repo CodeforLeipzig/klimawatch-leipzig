@@ -1,10 +1,23 @@
 group = "de.l.oklab.klimawatch"
 version = "1.0.0-SNAPSHOT"
 
+var mockkVersion = "1.13.3"
+var kotlinVersion = "1.7.20"
+var springVersion = "2.7.5"
+var jacksonVersion = "2.14.1"
+var junitVersion = "5.9.0"
+
+idea {
+    module {
+        sourceDirs.remove(file("src/module-test/kotlin"))
+        testSourceDirs.add(file("src/module-test/kotlin"))
+    }
+}
+
 plugins {
     id ("org.jetbrains.kotlin.plugin.noarg") version ("1.7.21")
-    id("org.springframework.boot") version("2.7.5")
-    id("org.jetbrains.kotlin.plugin.spring") version("1.7.20")
+    id ("org.springframework.boot") version("2.7.5")
+    id ("org.jetbrains.kotlin.plugin.spring") version("1.7.20")
     idea
     kotlin("jvm") version "1.7.20"
 }
@@ -34,25 +47,29 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10")
-    implementation(platform("org.springframework.boot:spring-boot-dependencies:2.7.5"))
-    implementation("org.springframework.boot:spring-boot-starter:2.7.5")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.7.5")
-    implementation("org.springframework.boot:spring-boot-starter-data-rest:2.7.5")
-    implementation("org.springframework.boot:spring-boot-starter-web:2.7.5")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
+    implementation(platform("org.springframework.boot:spring-boot-dependencies:${springVersion}"))
+    implementation("org.springframework.boot:spring-boot-starter:${springVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa:${springVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-data-rest:${springVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-web:${springVersion}")
     implementation("org.springframework:spring-web:5.3.23")
-    implementation("com.fasterxml.jackson.core:jackson-core:2.14.0-rc2")
-    implementation("com.fasterxml.jackson.core:jackson-annotations:2.14.0-rc2")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.14.0-rc2")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.0-rc2")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.14.0-rc2")
+    implementation("com.fasterxml.jackson.core:jackson-core:${jacksonVersion}")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}")
+    implementation("com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonVersion}")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:${jacksonVersion}")
     implementation("org.springdoc:springdoc-openapi-ui:1.6.12")
 
     annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor")
     runtimeOnly("org.postgresql:postgresql")
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.0")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testImplementation("io.mockk:mockk:${mockkVersion}")
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude(group="junit", module="junit")
+    }
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
     implementation(kotlin("stdlib"))
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(mapOf("group" to "org.junit.vintage", "module" to "junit-vintage-engine"))

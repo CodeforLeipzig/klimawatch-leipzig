@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -12,10 +13,11 @@ class EmissionsServiceTest {
     @Test
     fun testGetBySectorAndYear() {
         val objectMapper = jacksonObjectMapper()
-        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
-        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        val emissionsService = EmissionsService(objectMapper)
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+        objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL)
+        val repository = mockk<EmissionsRepository>()
+        val emissionsService = EmissionsService(objectMapper, repository)
         val result = emissionsService.getBySectorAndYear("Verkehr", 2016)
         val writer = objectMapper.writerWithDefaultPrettyPrinter()
         assertEquals("""
@@ -35,7 +37,8 @@ class EmissionsServiceTest {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        val emissionsService = EmissionsService(objectMapper)
+        val repository = mockk<EmissionsRepository>()
+        val emissionsService = EmissionsService(objectMapper, repository)
         val result = emissionsService.getBySectorAndYear("Verkehr", null)
         val writer = objectMapper.writerWithDefaultPrettyPrinter()
         assertEquals("""
@@ -79,7 +82,8 @@ class EmissionsServiceTest {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        val emissionsService = EmissionsService(objectMapper)
+        val repository = mockk<EmissionsRepository>()
+        val emissionsService = EmissionsService(objectMapper, repository)
         val result = emissionsService.getBySectorAndYear("Gebäude", null)
         val writer = objectMapper.writerWithDefaultPrettyPrinter()
         assertEquals("""
@@ -93,7 +97,8 @@ class EmissionsServiceTest {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        val emissionsService = EmissionsService(objectMapper)
+        val repository = mockk<EmissionsRepository>()
+        val emissionsService = EmissionsService(objectMapper, repository)
         val result = emissionsService.getBySectorAndYear(null, 2016 )
         val writer = objectMapper.writerWithDefaultPrettyPrinter()
         assertEquals("""
@@ -125,7 +130,8 @@ class EmissionsServiceTest {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        val emissionsService = EmissionsService(objectMapper)
+        val repository = mockk<EmissionsRepository>()
+        val emissionsService = EmissionsService(objectMapper, repository)
         val result = emissionsService.getBySectorAndYear(null, 2020 )
         val writer = objectMapper.writerWithDefaultPrettyPrinter()
         assertEquals("""
