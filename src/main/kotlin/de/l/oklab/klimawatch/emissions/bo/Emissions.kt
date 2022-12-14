@@ -16,7 +16,7 @@ data class Emissions(
         @ManyToOne(
                 fetch = FetchType.LAZY
         )
-        @JoinColumn(name = "id")
+        @JoinColumn(name = "id", insertable = false, updatable = false)
         val sector: Sector,
         val value: Double
 )

@@ -15,10 +15,10 @@ data class Sector(
     @Type(type = "org.hibernate.type.UUIDCharType")
     val externalId: UUID = UUID.randomUUID(),
     @OneToMany(
-        mappedBy = "post",
+        mappedBy = "sector",
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )
-    val comments: List<Emissions> = ArrayList<Emissions>(),
+    val emissions: List<Emissions> = ArrayList<Emissions>(),
     val sectorName: String
     )
