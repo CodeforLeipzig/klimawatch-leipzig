@@ -25,7 +25,7 @@ class Application {
                 logger.info(arg)
             }
         }
-
+    
     @PostConstruct
     @Throws(Exception::class)
     private fun init() {

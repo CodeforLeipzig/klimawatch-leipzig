@@ -11,6 +11,8 @@ data class EmissionsTO(
     fun toEntities(): List<Emissions> {
         return data.flatMap { it.toEntities() }
     }
+
+
 }
 
 data class EmissionsData(

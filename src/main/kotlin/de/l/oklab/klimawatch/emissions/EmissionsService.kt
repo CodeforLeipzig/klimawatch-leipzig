@@ -1,6 +1,7 @@
 package de.l.oklab.klimawatch.emissions
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import de.l.oklab.klimawatch.emissions.bo.Sector
 import de.l.oklab.klimawatch.emissions.to.EmissionsData
 import de.l.oklab.klimawatch.emissions.to.EmissionsTO
 import org.springframework.boot.context.properties.ConstructorBinding
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service
 class EmissionsService @ConstructorBinding constructor(
         internal val objectMapper: ObjectMapper,
         internal val repository: EmissionsRepository,
+        internal val repositorySector: SectorRepository
 ) {
 
     var emissions: EmissionsTO? = null
@@ -31,19 +33,22 @@ class EmissionsService @ConstructorBinding constructor(
     }
 
     fun importData() {
-        val data = getEmissionsData()
-        // TODO extract all distinct sector names
-
-        // TODO create sector entities and save them
-        // TODO use saved sector entities in emissions (match by name)
-        val entities = getEmissionsData().toEntities(/*sectors*/)
-        //repository.saveAll(entities)
+        val sectors = mutableListOf<Sector>()
+        val data = getEmissionsData().toEntities()
+        data.forEach{
+            val sectorExtractName = it.sector.sectorName
+            if (sectors.filter { sector -> sector.sectorName == sectorExtractName  }.isEmpty()){
+                repositorySector.saveAndFlush(Sector(sectorName = sectorExtractName))
+            }
+        }
     }
 
+    //TODO: change(create new method) importData and getEmissionsData to save Sector first
     private fun getEmissionsData(): EmissionsTO {
         return emissions ?: objectMapper.readValue(
             javaClass.getResource("/data/greenhouse-gas-emissions-leipzig.json"), EmissionsTO::class.java
         ).apply { emissions = this }
+        importData();
     }
 
     fun getSectors(): List<String> {

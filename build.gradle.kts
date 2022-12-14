@@ -48,6 +48,7 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.14.0-rc2")
     implementation("org.springdoc:springdoc-openapi-ui:1.6.12")
 
+    annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor")
     runtimeOnly("org.postgresql:postgresql")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.0")

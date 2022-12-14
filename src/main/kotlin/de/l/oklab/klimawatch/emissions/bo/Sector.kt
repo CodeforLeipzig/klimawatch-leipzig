@@ -21,4 +21,6 @@ data class Sector(
     )
     val emissions: List<Emissions> = ArrayList<Emissions>(),
     val sectorName: String
+
+
     )
