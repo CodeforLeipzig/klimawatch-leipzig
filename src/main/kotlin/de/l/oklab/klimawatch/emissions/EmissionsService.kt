@@ -44,17 +44,18 @@ class EmissionsService @ConstructorBinding constructor(
     }
 
     //TODO: change(create new method) importData and getEmissionsData to save Sector first
-    private fun getEmissionsData(): EmissionsTO {
+    fun getEmissionsData(): EmissionsTO {
+        importData();
         return emissions ?: objectMapper.readValue(
             javaClass.getResource("/data/greenhouse-gas-emissions-leipzig.json"), EmissionsTO::class.java
         ).apply { emissions = this }
-        importData();
     }
 
+    //TODO:Adjust to Sector as Entity
     fun getSectors(): List<String> {
         return listOf("Verkehr")
     }
-
+    //TODO:Pull years from database
     fun getYears(): List<Long> {
         return listOf(2018, 2019)
     }
