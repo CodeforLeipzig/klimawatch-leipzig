@@ -1,9 +1,11 @@
 package de.l.oklab.klimawatch.emissions
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import de.l.oklab.klimawatch.emissions.bo.Emissions
 import de.l.oklab.klimawatch.emissions.bo.Sector
 import de.l.oklab.klimawatch.emissions.to.EmissionsData
 import de.l.oklab.klimawatch.emissions.to.EmissionsTO
+import de.l.oklab.klimawatch.emissions.to.TimedData
 import org.springframework.boot.context.properties.ConstructorBinding
 import org.springframework.stereotype.Service
 
@@ -34,15 +36,31 @@ class EmissionsService @ConstructorBinding constructor(
 
     fun importData() {
         val sectors = mutableListOf<Sector>()
-        val data = getEmissionsData().toEntities()
-        data.forEach{
+        val data = getEmissionsData()
+
+        /*data.forEach{
             val sectorExtractName = it.sector.sectorName
             if (sectors.none { sector -> sector.sectorName == sectorExtractName }){
                 val savedSector = repositorySector.saveAndFlush(Sector(sectorName = sectorExtractName))
                 sectors.add(savedSector)
             }
-        }
+        }*/
+        val groupedBySector = data.data.groupBy { it.sector }
+        val result: List<Sector> = groupedBySector.map { createSector(it.key, it.value) }
+        repositorySector.saveAll(result)
     }
+
+
+    fun createSector(sectorName: String, emissions: List<EmissionsData>): Sector {
+        val sector = Sector(sectorName = sectorName, emissions = mutableListOf())
+        sector.emissions.addAll(emissions.flatMap { emission -> createEmissions(emission, sector) } )
+        return sector
+    }
+
+    fun createEmissions(emission: EmissionsData, sector: Sector) = emission.data.map { timed -> createEmission(timed, sector) }
+
+    fun createEmission(timed: TimedData, sector: Sector): Emissions =
+        Emissions(year = timed.year, value = timed.value, sector = sector)
 
     //TODO: change(create new method) importData and getEmissionsData to save Sector first
     fun getEmissionsData(): EmissionsTO {

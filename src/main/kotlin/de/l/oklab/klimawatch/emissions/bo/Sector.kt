@@ -19,7 +19,7 @@ data class Sector(
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )
-    val emissions: List<Emissions> = ArrayList<Emissions>(),
+    val emissions: MutableList<Emissions> = ArrayList<Emissions>(),
     val sectorName: String
 
 
