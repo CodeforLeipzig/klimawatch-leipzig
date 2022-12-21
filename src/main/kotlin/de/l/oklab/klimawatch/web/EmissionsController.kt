@@ -14,7 +14,7 @@ class EmissionsController @ConstructorBinding constructor(
     fun getSectors() = emissionsService.getSectors()
 
     @GetMapping("emissions-data")
-    fun getEmissionsData() = emissionsService.getEmissionsData()
+    fun getEmissionsData() = emissionsService.importData()/*getEmissionsData()*/
 
     @GetMapping("years")
     fun getYears() = emissionsService.getYears()

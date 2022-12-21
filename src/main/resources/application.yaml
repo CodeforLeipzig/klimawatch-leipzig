@@ -2,11 +2,12 @@ app:
 
 spring:
   jpa:
+    generate-ddl: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
       jdbc:
         lob:
           non_contextual_creation: true
@@ -14,5 +15,5 @@ spring:
     initialization-mode: always
     platform: postgres
     url: jdbc:postgresql://localhost:5433/klimawatchdb
-    username: klimawatch
-    password: klimawatch
+    username: root
+    password: r00dPwt
