@@ -37,8 +37,9 @@ class EmissionsService @ConstructorBinding constructor(
         val data = getEmissionsData().toEntities()
         data.forEach{
             val sectorExtractName = it.sector.sectorName
-            if (sectors.filter { sector -> sector.sectorName == sectorExtractName  }.isEmpty()){
-                repositorySector.saveAndFlush(Sector(sectorName = sectorExtractName))
+            if (sectors.none { sector -> sector.sectorName == sectorExtractName }){
+                val savedSector = repositorySector.saveAndFlush(Sector(sectorName = sectorExtractName))
+                sectors.add(savedSector)
             }
         }
     }
