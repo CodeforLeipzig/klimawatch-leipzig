@@ -10,8 +10,11 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.runApplication
 import org.springframework.context.annotation.Bean
 import org.springframework.web.client.RestTemplate
+import org.springframework.web.servlet.config.annotation.CorsRegistry
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 import java.time.format.DateTimeFormatter
 import javax.annotation.PostConstruct
+
 
 @EnableConfigurationProperties(AppProperties::class)
 @SpringBootApplication
@@ -44,6 +47,17 @@ class Application {
     @Bean
     fun restTemplate(): RestTemplate {
         return RestTemplate()
+    }
+
+    @Bean
+    fun corsConfigurer(): WebMvcConfigurer? {
+        return object : WebMvcConfigurer {
+            override fun addCorsMappings(registry: CorsRegistry) {
+                registry.addMapping("/**")
+                    .allowedOrigins("*")
+                    .allowedMethods("GET", "PUT", "POST", "PATCH", "DELETE", "OPTIONS")
+            }
+        }
     }
 }
 
