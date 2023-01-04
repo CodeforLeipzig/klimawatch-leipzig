@@ -7,6 +7,7 @@ import de.l.oklab.klimawatch.emissions.to.EmissionsData
 import de.l.oklab.klimawatch.emissions.to.EmissionsTO
 import de.l.oklab.klimawatch.emissions.to.TimedData
 import org.springframework.boot.context.properties.ConstructorBinding
+import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Service
 
 @Service
@@ -37,14 +38,6 @@ class EmissionsService @ConstructorBinding constructor(
     fun importData() {
         val sectors = mutableListOf<Sector>()
         val data = getEmissionsData()
-
-        /*data.forEach{
-            val sectorExtractName = it.sector.sectorName
-            if (sectors.none { sector -> sector.sectorName == sectorExtractName }){
-                val savedSector = repositorySector.saveAndFlush(Sector(sectorName = sectorExtractName))
-                sectors.add(savedSector)
-            }
-        }*/
         val groupedBySector = data.data.groupBy { it.sector }
         val result: List<Sector> = groupedBySector.map { createSector(it.key, it.value) }
         repositorySector.saveAll(result)
@@ -62,7 +55,6 @@ class EmissionsService @ConstructorBinding constructor(
     fun createEmission(timed: TimedData, sector: Sector): Emissions =
         Emissions(year = timed.year, value = timed.value, sector = sector)
 
-    //TODO: change(create new method) importData and getEmissionsData to save Sector first
     fun getEmissionsData(): EmissionsTO {
         return emissions ?: objectMapper.readValue(
             javaClass.getResource("/data/greenhouse-gas-emissions-leipzig.json"), EmissionsTO::class.java
@@ -71,10 +63,11 @@ class EmissionsService @ConstructorBinding constructor(
 
     //TODO:Adjust to Sector as Entity
     fun getSectors(): List<String> {
-        return listOf("Verkehr")
+        return repositorySector.getSectors()
     }
+
     //TODO:Pull years from database
-    fun getYears(): List<Long> {
-        return listOf(2018, 2019)
+    fun getYears(): List<Int>{
+        return repository.getYears()
     }
 }
