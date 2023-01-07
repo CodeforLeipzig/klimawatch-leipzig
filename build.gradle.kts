@@ -45,6 +45,7 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.14.0")
     implementation("org.springdoc:springdoc-openapi-ui:1.6.14")
     implementation("javax.annotation:javax.annotation-api:1.3.2")
+    implementation("javax.persistence:javax.persistence-api:2.2")
 
     annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor")
     runtimeOnly("org.postgresql:postgresql")
