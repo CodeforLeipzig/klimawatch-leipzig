@@ -10,8 +10,7 @@ data class Emissions(
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Long? = null,
         @Column(unique = true, nullable = false)
-        @Type(type = "org.hibernate.type.UUIDCharType")
-        val externalId: UUID = UUID.randomUUID(),
+        val externalId: String = UUID.randomUUID().toString(),
         val year: Int,
         @ManyToOne(
                 fetch = FetchType.LAZY
