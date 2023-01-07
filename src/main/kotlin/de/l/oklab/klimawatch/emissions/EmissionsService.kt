@@ -6,7 +6,7 @@ import de.l.oklab.klimawatch.emissions.bo.Sector
 import de.l.oklab.klimawatch.emissions.to.EmissionsData
 import de.l.oklab.klimawatch.emissions.to.EmissionsTO
 import de.l.oklab.klimawatch.emissions.to.TimedData
-import org.springframework.boot.context.properties.ConstructorBinding
+import org.springframework.boot.context.properties.bind.ConstructorBinding
 import org.springframework.stereotype.Service
 
 @Service

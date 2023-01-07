@@ -1,7 +1,7 @@
 package de.l.oklab.klimawatch.web
 
 import de.l.oklab.klimawatch.emissions.EmissionsService
-import org.springframework.boot.context.properties.ConstructorBinding
+import org.springframework.boot.context.properties.bind.ConstructorBinding
 import org.springframework.web.bind.annotation.*
 
 @RestController

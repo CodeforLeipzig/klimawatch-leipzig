@@ -1,7 +1,9 @@
 package de.l.oklab.klimawatch.emissions.to
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 
+@JsonIgnoreProperties(ignoreUnknown=true)
 data class EmissionsTO(
     @JsonProperty("Daten")
     val data: List<EmissionsData>
