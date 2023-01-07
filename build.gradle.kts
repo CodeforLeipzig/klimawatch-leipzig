@@ -16,13 +16,6 @@ java {
 
 springBoot {
     mainClass.value("de.l.oklab.klimawatch.Application")
-    buildInfo {
-        properties {
-            setGroup("de.l.oklab.klimawatch")
-            setName("app")
-            setVersion("1.0.0-SNAPSHOT")
-        }
-    }
 }
 
 tasks.bootJar {
