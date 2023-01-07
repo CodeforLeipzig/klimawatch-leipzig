@@ -18,9 +18,9 @@ springBoot {
     mainClass.value("de.l.oklab.klimawatch.Application")
     buildInfo {
         properties {
-            group = "de.l.oklab.klimawatch"
-            name = "app"
-            version = "1.0.0-SNAPSHOT"
+            setGroup("de.l.oklab.klimawatch")
+            setName("app")
+            setVersion("1.0.0-SNAPSHOT")
         }
     }
 }
