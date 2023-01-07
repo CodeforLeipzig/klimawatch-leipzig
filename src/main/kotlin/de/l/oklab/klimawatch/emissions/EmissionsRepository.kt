@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository
 
 @Repository
-public interface EmissionsRepository: JpaRepository<Emissions, Long> {
+interface EmissionsRepository: JpaRepository<Emissions, Long> {
     @Query("SELECT DISTINCT year FROM Emissions ORDER BY year")
     fun getYears(): List<Int>
 }

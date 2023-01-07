@@ -21,6 +21,7 @@ import javax.annotation.PostConstruct
 class Application {
     internal val logger = LoggerFactory.getLogger(this::class.java)
 
+    @Suppress("unused")
     @Bean
     fun initializer(): CommandLineRunner =
         CommandLineRunner { args: Array<String?> ->
@@ -29,6 +30,7 @@ class Application {
             }
         }
     
+    @Suppress("unused")
     @PostConstruct
     @Throws(Exception::class)
     private fun init() {

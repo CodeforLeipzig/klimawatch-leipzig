@@ -5,5 +5,4 @@ import org.springframework.boot.context.properties.ConstructorBinding
 
 @ConfigurationProperties(prefix = "app")
 @ConstructorBinding
-class AppProperties {
-}
+class AppProperties

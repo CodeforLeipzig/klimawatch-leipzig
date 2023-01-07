@@ -1,6 +1,5 @@
 package de.l.oklab.klimawatch.emissions
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import de.l.oklab.klimawatch.emissions.bo.Emissions
 import de.l.oklab.klimawatch.emissions.bo.Sector
@@ -25,13 +24,14 @@ class GroupTest {
         println(result)
     }
 
-    fun createSector(sectorName: String, emissions: List<EmissionsData>) {
+    private fun createSector(sectorName: String, emissions: List<EmissionsData>) {
         val sector = Sector(sectorName = sectorName, emissions = mutableListOf())
-        sector.emissions.addAll(emissions.flatMap { emission -> createEmissions(emission, sector) } )
+        sector.emissions.addAll(emissions.flatMap { emission -> createEmissions(emission, sector) })
     }
 
-    fun createEmissions(emission: EmissionsData, sector: Sector) = emission.data.map { timed -> createEmission(timed, sector) }
+    private fun createEmissions(emission: EmissionsData, sector: Sector) =
+        emission.data.map { timed -> createEmission(timed, sector) }
 
-    fun createEmission(timed: TimedData, sector: Sector): Emissions =
+    private fun createEmission(timed: TimedData, sector: Sector): Emissions =
         Emissions(year = timed.year, value = timed.value, sector = sector)
 }

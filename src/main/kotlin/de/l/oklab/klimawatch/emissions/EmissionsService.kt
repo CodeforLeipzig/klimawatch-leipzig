@@ -7,14 +7,13 @@ import de.l.oklab.klimawatch.emissions.to.EmissionsData
 import de.l.oklab.klimawatch.emissions.to.EmissionsTO
 import de.l.oklab.klimawatch.emissions.to.TimedData
 import org.springframework.boot.context.properties.ConstructorBinding
-import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Service
 
 @Service
 class EmissionsService @ConstructorBinding constructor(
-        internal val objectMapper: ObjectMapper,
-        internal val repository: EmissionsRepository,
-        internal val repositorySector: SectorRepository
+    internal val objectMapper: ObjectMapper,
+    internal val repository: EmissionsRepository,
+    internal val repositorySector: SectorRepository
 ) {
 
     var emissions: EmissionsTO? = null
@@ -46,11 +45,12 @@ class EmissionsService @ConstructorBinding constructor(
 
     fun createSector(sectorName: String, emissions: List<EmissionsData>): Sector {
         val sector = Sector(sectorName = sectorName, emissions = mutableListOf())
-        sector.emissions.addAll(emissions.flatMap { emission -> createEmissions(emission, sector) } )
+        sector.emissions.addAll(emissions.flatMap { emission -> createEmissions(emission, sector) })
         return sector
     }
 
-    fun createEmissions(emission: EmissionsData, sector: Sector) = emission.data.map { timed -> createEmission(timed, sector) }
+    fun createEmissions(emission: EmissionsData, sector: Sector) =
+        emission.data.map { timed -> createEmission(timed, sector) }
 
     fun createEmission(timed: TimedData, sector: Sector): Emissions =
         Emissions(year = timed.year, value = timed.value, sector = sector)
@@ -67,7 +67,7 @@ class EmissionsService @ConstructorBinding constructor(
     }
 
     //TODO:Pull years from database
-    fun getYears(): List<Int>{
+    fun getYears(): List<Int> {
         return repository.getYears()
     }
 }
