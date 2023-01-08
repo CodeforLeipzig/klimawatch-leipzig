@@ -2,7 +2,7 @@ package de.l.oklab.klimawatch.emissions.bo
 
 import org.hibernate.annotations.Type
 import java.util.*
-import javax.persistence.*
+import jakarta.persistence.*
 
 
 
