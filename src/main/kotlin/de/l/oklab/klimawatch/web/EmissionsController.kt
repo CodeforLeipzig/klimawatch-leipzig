@@ -22,7 +22,7 @@ class EmissionsController @ConstructorBinding constructor(
     //TODO:Change Sector to Entity
     @GetMapping("greenhouse-gases")
     fun getGreenhouseGasEmissions(
-        @RequestParam(required = false) sector: String,
+        @RequestParam(required = false) sector: String?,
         @RequestParam(required = false) year: Int?
     ) = emissionsService.getBySectorAndYear(year = year, sector = sector)
 }

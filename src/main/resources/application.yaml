@@ -15,5 +15,5 @@ spring:
     initialization-mode: always
     platform: postgres
     url: jdbc:postgresql://localhost:5433/klimawatchdb
-    username: root
-    password: r00dPwt
+    username: klimawatch
+    password: klimawatch
