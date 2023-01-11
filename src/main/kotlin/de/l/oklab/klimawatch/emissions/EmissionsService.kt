@@ -70,4 +70,8 @@ class EmissionsService @ConstructorBinding constructor(
     fun getYears(): List<Int> {
         return repository.getYears()
     }
+
+    fun call() {
+        println("after")
+    }
 }

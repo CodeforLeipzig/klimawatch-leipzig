@@ -3,6 +3,7 @@ package de.l.oklab.klimawatch
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer
 import de.l.oklab.klimawatch.config.AppProperties
+import de.l.oklab.klimawatch.emissions.EmissionsService
 import org.slf4j.LoggerFactory
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -14,11 +15,21 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 import java.time.format.DateTimeFormatter
 import jakarta.annotation.PostConstruct
+import org.springframework.beans.factory.annotation.Autowired
 
 @EnableConfigurationProperties(AppProperties::class)
 @SpringBootApplication
 class Application {
     internal val logger = LoggerFactory.getLogger(this::class.java)
+
+    @org.springframework.context.annotation.Lazy
+    @Autowired
+    lateinit var service: EmissionsService
+
+    @PostConstruct
+    fun after() {
+        service.call()
+    }
 
     @Suppress("unused")
     @Bean

@@ -17,3 +17,6 @@ spring:
     url: jdbc:postgresql://localhost:5433/klimawatchdb
     username: klimawatch
     password: klimawatch
+
+  main:
+    allow-circular-references: true
