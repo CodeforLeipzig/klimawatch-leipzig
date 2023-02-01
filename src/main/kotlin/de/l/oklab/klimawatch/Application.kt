@@ -28,7 +28,8 @@ class Application {
 
     @PostConstruct
     fun after() {
-        service.call()
+        if(service.emptyCheck() == true){
+        service.importData()}
     }
 
     @Suppress("unused")
@@ -38,6 +39,7 @@ class Application {
             for (arg in args) {
                 logger.info(arg)
             }
+
         }
     
     @Suppress("unused")

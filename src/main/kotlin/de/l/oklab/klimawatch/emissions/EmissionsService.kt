@@ -71,7 +71,8 @@ class EmissionsService @ConstructorBinding constructor(
         return repository.getYears()
     }
 
-    fun call() {
-        println("after")
+    fun emptyCheck(): Boolean{
+        return repository.count().toInt() == 0
     }
+
 }

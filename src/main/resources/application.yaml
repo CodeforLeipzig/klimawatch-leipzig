@@ -7,16 +7,18 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       jdbc:
         lob:
           non_contextual_creation: true
   datasource:
-    initialization-mode: always
-    platform: postgres
     url: jdbc:postgresql://localhost:5433/klimawatchdb
     username: klimawatch
     password: klimawatch
 
   main:
     allow-circular-references: true
+  sql:
+    init:
+      mode: always
+      platform: postgres
