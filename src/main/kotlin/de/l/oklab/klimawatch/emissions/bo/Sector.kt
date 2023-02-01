@@ -1,6 +1,4 @@
 package de.l.oklab.klimawatch.emissions.bo
-
-import org.hibernate.annotations.Type
 import java.util.*
 import jakarta.persistence.*
 
@@ -19,6 +17,13 @@ data class Sector(
         orphanRemoval = true
     )
     val emissions: MutableList<Emissions> = ArrayList<Emissions>(),
+    @OneToMany(
+        mappedBy = "sector",
+        cascade = [CascadeType.ALL],
+        orphanRemoval = true
+    )
+    @JoinColumn(name = "vehicle_id")
+    val vehicles: MutableList<Vehicles> = ArrayList<Vehicles>(),
     val sectorName: String
 
 
