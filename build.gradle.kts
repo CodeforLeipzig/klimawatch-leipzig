@@ -47,6 +47,9 @@ dependencies {
     implementation("jakarta.platform:jakarta.jakartaee-web-api:9.1.0")
     implementation("org.hibernate:hibernate-validator:8.0.0.Final")
 
+    implementation("com.apicatalog:titanium-json-ld:1.3.1")
+    implementation("org.glassfish:jakarta.json:2.0.1")
+
     annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor")
     runtimeOnly("org.postgresql:postgresql")
 
