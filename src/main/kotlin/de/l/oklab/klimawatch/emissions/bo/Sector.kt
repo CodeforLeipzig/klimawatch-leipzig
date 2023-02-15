@@ -22,7 +22,6 @@ data class Sector(
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )
-    @JoinColumn(name = "vehicle_id")
     val vehicles: MutableList<Vehicles> = ArrayList<Vehicles>(),
     val sectorName: String
 

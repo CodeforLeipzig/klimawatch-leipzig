@@ -14,7 +14,7 @@ services:
       -  ${pgdata}:/var/lib/postgresql/data
       - ./db:/docker-entrypoint-initdb.d/
     ports:
-      - "5433:5432"
+      - "5434:5432"
 
   pgadmin4:
     image: dpage/pgadmin4

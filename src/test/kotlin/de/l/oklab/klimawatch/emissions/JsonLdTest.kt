@@ -9,8 +9,8 @@ class JsonLdTest {
 
     @Test
     fun readJsonLd() {
-        val file = File("C:/Users/Joerg/Desktop/statistik-katalog.json")
-        //val catalog = JsonLd.expand("file:///home/joerg/Schreibtisch/statistik-katalog.json")
+        //val file = File("C:/Users/Joerg/Desktop/statistik-katalog.json")
+        val file = File("/home/joerg/Schreibtisch/statistik-katalog.json")
         val objectRegistry = CatalogReadService().readCatalog(file.toURI())
         ConceptsHierarchySerializer(objectRegistry).serialize()
     }

@@ -14,6 +14,7 @@ data class Vehicles(
     @ManyToOne(
         fetch = FetchType.LAZY
     )
+    @JoinColumn(name = "vehicle_id")
     val sector: Sector,
     val year: Int
 )
