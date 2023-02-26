@@ -12,7 +12,7 @@ spring:
         lob:
           non_contextual_creation: true
   datasource:
-    url: jdbc:mysql://${DB_HOSTNAME}:${DB_PORT}/${DB_SCHEMA}?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    url: jdbc:postgresql://${DB_HOSTNAME}:${DB_PORT}/${DB_SCHEMA}?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
 

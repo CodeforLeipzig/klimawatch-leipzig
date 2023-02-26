@@ -2,7 +2,7 @@ group = "de.l.oklab.klimawatch"
 version = "1.0.0-SNAPSHOT"
 
 plugins {
-    id ("org.jetbrains.kotlin.plugin.noarg")
+    id ("org.jetbrains.kotlin.plugin.noarg") version "1.8.0"
     id("org.springframework.boot")
     id("io.spring.dependency-management")
     id("com.github.ben-manes.versions")
