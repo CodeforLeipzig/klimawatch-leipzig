@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ApplicationKt" type="JetRunConfigurationType" nameIsGenerated="true">
+    <envs>
+      <env name="SERVER_PORT" value="8080" />
+      <env name="DB_HOSTNAME" value="loclahost" />
+      <env name="DB_PORT" value="5432" />
+      <env name="DB_SCHEMA" value="klimawatchdb" />
+      <env name="DB_USERNAME" value="klimawatch" />
+      <env name="DB_PASSWORD" value="klimawatch" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="de.l.oklab.klimawatch.ApplicationKt" />
+    <module name="klimawatch-leipzig.main" />
+    <shortenClasspath name="NONE" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
