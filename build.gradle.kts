@@ -2,11 +2,13 @@ group = "de.l.oklab.klimawatch"
 version = "1.0.0-SNAPSHOT"
 
 plugins {
-    id ("org.jetbrains.kotlin.plugin.noarg") version ("1.8.0")
-    id("org.springframework.boot") version("3.0.1")
-    id("org.jetbrains.kotlin.plugin.spring") version("1.8.0")
+    id ("org.jetbrains.kotlin.plugin.noarg")
+    id("org.springframework.boot")
+    id("io.spring.dependency-management")
+    id("com.github.ben-manes.versions")
+    id("org.jetbrains.kotlin.plugin.spring")
     idea
-    kotlin("jvm") version "1.8.0"
+    kotlin("jvm")
 }
 
 java {
@@ -19,7 +21,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 }
 
 springBoot {
-    mainClass.value("de.l.oklab.klimawatch.Application")
+    mainClass.value("de.l.oklab.klimawatch.ApplicationKt")
 }
 
 tasks.bootJar {
@@ -31,34 +33,32 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0")
-    implementation(platform("org.springframework.boot:spring-boot-dependencies:3.0.1"))
-    implementation("org.springframework.boot:spring-boot-starter:3.0.1")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.0.1")
-    implementation("org.springframework.boot:spring-boot-starter-data-rest:3.0.1")
-    implementation("org.springframework.boot:spring-boot-starter-web:3.0.1")
-    implementation("org.springframework:spring-web:6.0.3")
-    implementation("com.fasterxml.jackson.core:jackson-core:2.14.0")
-    implementation("com.fasterxml.jackson.core:jackson-annotations:2.14.0")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.14.0")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.0")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.14.0")
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
-    implementation("jakarta.platform:jakarta.jakartaee-web-api:9.1.0")
-    implementation("org.hibernate:hibernate-validator:8.0.0.Final")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:_")
+    implementation(platform(Spring.boms.dependencies))
+    implementation("org.springframework.boot:spring-boot-starter:_")
+    implementation(Spring.boot.data.jpa)
+    implementation(Spring.boot.data.rest)
+    implementation(Spring.boot.web)
+    implementation("org.springframework:spring-web:_")
+    implementation("com.fasterxml.jackson.core:jackson-core:_")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:_")
+    implementation("com.fasterxml.jackson.core:jackson-databind:_")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:_")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:_")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:_")
+    implementation("jakarta.platform:jakarta.jakartaee-web-api:_")
+    implementation("org.hibernate:hibernate-validator:_")
 
-    implementation("com.apicatalog:titanium-json-ld:1.3.1")
-    implementation("org.glassfish:jakarta.json:2.0.1")
+    implementation("com.apicatalog:titanium-json-ld:_")
+    implementation("org.glassfish:jakarta.json:_")
 
-    annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor")
-    runtimeOnly("org.postgresql:postgresql")
+    annotationProcessor (Spring.boot.configurationProcessor)
+    runtimeOnly("org.postgresql:postgresql:_")
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.0")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.0")
+    testImplementation(Testing.junit.jupiter.api)
+    testRuntimeOnly(Testing.junit.jupiter.engine)
     implementation(kotlin("stdlib"))
-    testImplementation("org.springframework.boot:spring-boot-starter-test") {
-        exclude(mapOf("group" to "org.junit.vintage", "module" to "junit-vintage-engine"))
-    }
+    testImplementation(Spring.boot.test)
 }
 noArg {
     annotation("jakarta.persistence.Entity")

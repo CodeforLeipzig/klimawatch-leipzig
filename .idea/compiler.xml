@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$PROJECT_DIR$/../../../dockerdata/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-configuration-processor/3.0.3/fadcb8f1558db61596dec6e523d66305410dbcdc/spring-boot-configuration-processor-3.0.3.jar" />
+        </processorPath>
+        <module name="klimawatch-leipzig.main" />
+      </profile>
+    </annotationProcessing>
     <bytecodeTargetLevel target="17" />
   </component>
 </project>

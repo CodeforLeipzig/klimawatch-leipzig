@@ -12,7 +12,7 @@ spring:
         lob:
           non_contextual_creation: true
   datasource:
-    url: jdbc:postgresql://localhost:5433/klimawatchdb
+    url: jdbc:postgresql://localhost:5434/klimawatchdb
     username: klimawatch
     password: klimawatch
 
